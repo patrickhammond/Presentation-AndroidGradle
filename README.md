@@ -453,5 +453,3 @@ class: center, middle
 
 ![Android](androidify.gif)
 # Thank you!
-
----
