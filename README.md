@@ -406,7 +406,6 @@ class: center, middle
 .left-column[
 ## Software
 ## Project
-## Files
 ## Example
 ]
 .right-column[
@@ -433,21 +432,45 @@ class: center, middle
 ## Version Control
 ]
 .right-column[
-- ### If you're using version control and want to preserve history DO NOT use the tooling migration scripts to migrate to Gradle; they won't preserve history (as of Jan 2014).
-  - ### TODO Snippet
-  - ### Drop down to the CLI and use the VCS commands to move things around (ex: `git mv AndroidManifest app/src/main/AndroidManifest.xml`)
-  - ### TODO Sample migration snippet
-      - TODO: Gradle wrapper https://github.com/mgrzechocinski/dagger2-example/blob/master/build.gradle
+- ### If you're using version control and want to preserve history avoid the in-tool migration scripts
+  - #### Those migration tools **will not** preserve VCS history (as of Jan 2014)
+  - #### Drop down to the command line and use the VCS commands to move things around
+  - #### Example:   
+  `git mv AndroidManifest app/src/main/AndroidManifest.xml`
+- ### Move your code, resources, manifests into their final locations
 ]
 
 ---
 
 .left-column[
 ## Version Control
+## Gradle files
+]
+.right-column[
+- ### If you're not using migration tool
+    - #### Create a blank Android project in Android Studio (using your app's package name, etc)
+    - #### Copy all the Gradle files over to the project being migrated
+    - #### Is this a lame way to do a migration: **very**
+        - ##### There are only a few files to move
+        - ##### You will likely only do this once (or very infrequently)
+- ### If you are using the migration tool this should be taken care of for you
+]
+
+---
+
+.left-column[
+## Version Control
+## Gradle files
 ## Tool Differences
 ]
 .right-column[
-- ### If you're used to having library projects your app depends on open in your workspace, those are correctly managed now without needing to awkwardly keep them open just to build your app.
+- ### Android Studio vs Eclipse: this is its own talk!
+- ### Biggest development workflow differences
+    - #### Figure out where the "Sync Project with Gradle Files" menu option is in Android Studio
+    - #### No longer need to manually manage JARs, etc (except for some 3rd party libraries...)
+    - #### No longer need to open up library projects in your workspace just to build your app
+    - #### Keyboard shortcuts all different (there is an "Eclipse" mode)
+    - #### No incremental compilation (ie: the realtime Errors view in Eclipse)
 ]
 
 ---
