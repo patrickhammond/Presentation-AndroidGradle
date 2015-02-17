@@ -51,11 +51,9 @@ class: center, middle
 ]
 .right-column[
 ## History
-- ### Android Gradle plugin work started in early 2013
-- ### Finally left beta with 1.0 in Dec 2014
-
-## Interesting
-- ### Jason Voegele created an Android Gradle plugin prior to Google's work   
+- ### Jason Voegele maintained an Android Gradle plugin prior to Google's work   
+- ### Android Gradle plugin work started in early 2013 with the intent to replace Ant and Eclipse
+- ### Finally left beta with Version 1.0 in Dec 2014
 ]
 .footnote[https://github.com/jvoegele/gradle-android-plugin] 
 
@@ -107,7 +105,7 @@ class: center, middle
 ]
 .right-column[
 > ### "I tried it before and my project broke with every plugin update..."
---Any Android developer who tried Gradle before 1.0
+--Any Android developer who used the Android Gradle plugin before v1.0
 
 .center[![Pain meme](pain.gif)]
 ]
@@ -139,7 +137,7 @@ class: center, middle
 ## Software
 ]
 .right-column[
-- ### Android SDK, Java, etc
+- ### Android SDK, Java, etc  (the usual suspects)
 - ### Must use Android Studio (1.0+)
   - ### IntelliJ probably works too
   - ### Eclipse won't work (Feb 2015)
@@ -152,8 +150,32 @@ class: center, middle
 ## Project
 ]
 .right-column[
-- ### Standard project structure
-- ### TODO
+### Standard project structure
+```
+/yourApp
+    app/
+        src/
+            main/
+                java/
+                    ...
+                res/
+                    ...
+                AndroidManifest.xml
+            androidTest/
+                java/
+                    ...
+        build.gradle
+        proguard-rules.pro
+    gradle/wrapper/
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+    build.gradle
+    settings.gradle
+    gradlew
+    gradlew.bat
+    gradle.properties
+```
+### Yikes!  Not as scary as it looks...
 ]
 
 ---
@@ -161,11 +183,222 @@ class: center, middle
 .left-column[
 ## Software
 ## Project
-## Files
 ]
 .right-column[
-- ### Gradle files
-- ### multiple build.gradle files, settings.gradle, gradlew, gradle.properties, gradle wrapper, etc
+### Directories
+```
+*/yourApp                                Project
+*   app/                                App module
+*       src/                            Code goes here
+*           main/                       Main variant
+                java/                   
+                    ...
+                res/
+                    ...
+                AndroidManifest.xml
+            androidTest/
+                java/
+                    ...
+        build.gradle
+        proguard-rules.pro
+    gradle/wrapper/
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+    build.gradle
+    settings.gradle
+    gradlew
+    gradlew.bat
+    gradle.properties
+```
+
+- Multi-project configuration is recommended to support, library projects, Wear apps, etc
+- Modules follow the Standard Directory Layout
+- We'll talk more about the "main variant" later
+]
+
+---
+
+.left-column[
+## Software
+## Project
+]
+.right-column[
+### Code, resources, manifests, etc
+```
+/yourApp                                Project
+    app/                                App module
+        src/                            Code goes here
+            main/                       Main variant
+*               java/                   Code
+*                   ...                 Code
+*               res/                    Code
+*                   ...                 Code
+*               AndroidManifest.xml     Code
+            androidTest/
+                java/
+                    ...
+        build.gradle
+*       proguard-rules.pro              Proguard
+    gradle/wrapper/
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+    build.gradle
+    settings.gradle
+    gradlew
+    gradlew.bat
+    gradle.properties
+```
+
+- You can sometimes wholesale move an existing Eclipse project into `app/src/main` and be most of the way through a migration.
+]
+
+---
+
+.left-column[
+## Software
+## Project
+]
+.right-column[
+### Automated tests
+```
+/yourApp                                Project
+    app/                                App module
+        src/                            Code goes here
+            main/                       Main variant
+                java/                   Code
+                    ...                 Code
+                res/                    Code
+                    ...                 Code
+                AndroidManifest.xml     Code
+*           androidTest/                Tests
+*               java/                   Tests
+*                   ...                 Tests
+        build.gradle
+        proguard-rules.pro              Proguard
+    gradle/wrapper/
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+    build.gradle
+    settings.gradle
+    gradlew
+    gradlew.bat
+    gradle.properties
+```
+
+- Automated tests no longer have a dedicated project, they live side-by-side your app code in a special `androidTest` directory.
+
+]
+
+---
+
+.left-column[
+## Software
+## Project
+]
+.right-column[
+### Project config files
+```
+/yourApp                                Project
+    app/                                App module
+        src/                            Code goes here
+            main/                       Main variant
+                java/                   Code
+                    ...                 Code
+                res/                    Code
+                    ...                 Code
+                AndroidManifest.xml     Code
+            androidTest/                Tests
+                java/                   Tests
+                    ...                 Tests
+*       build.gradle                    Gradle project file
+        proguard-rules.pro              Proguard
+    gradle/wrapper/
+        gradle-wrapper.jar
+        gradle-wrapper.properties
+*   build.gradle                        Gradle project file
+*   settings.gradle                     Gradle project file
+    gradlew
+    gradlew.bat
+    gradle.properties
+```
+
+- `app/build.gradle` - App specific build and config
+- `build.gradle` - Project wide build and config
+- `settings.gradle` - Declares the project modules
+]
+
+---
+
+.left-column[
+## Software
+## Project
+]
+.right-column[
+### Gradle wrapper files
+```
+/yourApp                                Project
+    app/                                App module
+        src/                            Code goes here
+            main/                       Main variant
+                java/                   Code
+                    ...                 Code
+                res/                    Code
+                    ...                 Code
+                AndroidManifest.xml     Code
+            androidTest/                Tests
+                java/                   Tests
+                    ...                 Tests
+        build.gradle                    Gradle project file
+        proguard-rules.pro              Proguard
+*   gradle/wrapper/                     Gradle wrapper
+*       gradle-wrapper.jar              Gradle wrapper
+*       gradle-wrapper.properties       Gradle wrapper
+    build.gradle                        Gradle project file
+    settings.gradle                     Gradle project file
+*   gradlew                             Gradle wrapper
+*   gradlew.bat                         Gradle wrapper
+    gradle.properties                   
+```
+
+- `gradlew/gradlew.bat` - executable scripts to install/run Gradle
+- `gradle/wrapper/gradle-wrapper.properties` - occasionally needs modified when updating the Android plugin version
+
+]
+
+---
+
+.left-column[
+## Software
+## Project
+]
+.right-column[
+### Gradle config
+```
+/yourApp                                Project
+    app/                                App module
+        src/                            Code goes here
+            main/                       Main variant
+                java/                   Code
+                    ...                 Code
+                res/                    Code
+                    ...                 Code
+                AndroidManifest.xml     Code
+            androidTest/                Tests
+                java/                   Tests
+                    ...                 Tests
+        build.gradle                    Gradle project file
+        proguard-rules.pro              Proguard
+    gradle/wrapper/                     Gradle wrapper
+        gradle-wrapper.jar              Gradle wrapper
+        gradle-wrapper.properties       Gradle wrapper
+    build.gradle                        Gradle project file
+    settings.gradle                     Gradle project file
+    gradlew                             Gradle wrapper 
+    gradlew.bat                         Gradle wrapper
+*   gradle.properties                   Gradle config
+```
+
+- Tweak this if you need to adjust Gradle environment or execution values (ex: you need to increase the max JVM heap size)
 ]
 
 ---
@@ -177,8 +410,15 @@ class: center, middle
 ## Example
 ]
 .right-column[
-- ### Add Play Services and the support library to an app
-- ### TODO Snippet
+- ### Lets do this
+    - #### Look at the three main Gradle project files
+        - ##### `dependencies`
+        - ##### `android`
+        - ##### `repositories`
+        - ##### `buildscript`
+    - #### Add Play Services and the support library to our app
+        - `compile 'com.android.support:support-v4:21.0.3'`
+        - `compile 'com.google.android.gms:play-services-base:6.5.87'`
 ]
 
 ---
