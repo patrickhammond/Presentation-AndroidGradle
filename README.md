@@ -872,6 +872,10 @@ open app/build/reports/findbugs/findbugs.html
 ```gradle
 # app/build.gradle
 buildscript {
+  repositories {
+    jcenter()
+  }
+
   dependencies {
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.8'
   }
