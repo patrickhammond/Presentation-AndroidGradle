@@ -1,5 +1,5 @@
 class: center, middle, title-slide
-# Gradle and the new Android Build System
+# Gradle and the Android Build System
 **Patrick Hammond**  
 patrick@madebyatomicrobot.com  
 @patrickhammond
@@ -8,24 +8,22 @@ patrick@madebyatomicrobot.com
 
 ---
 
-class: center
-## You can find the presentation and sample code on GitHub:
-https://github.com/patrickhammond/Presentation-AndroidGradle
-![QR Code](http://chart.googleapis.com/chart?cht=qr&chs=250x250&choe=UTF-8&chld=H&chl=http://goo.gl/y83O9O)
+## Presentation Links
 
-### Sample code is aimed to drive discussion and show concepts only. It is not polished so use with caution.
+- #### The presentation can be found here:  http://patrickhammond.github.io/Presentation-AndroidGradle
+- #### Sample code can be found here:  https://github.com/patrickhammond/Presentation-AndroidGradle
+
+#### **Disclaimer:** Sample code is aimed to drive discussion and show concepts only.  It is not polished so use with caution!
 
 ---
 
-.wide-left-column[
-.portrait[![Portrait](portrait.jpeg)]
-]
-.thin-right-column[
 ## Who am I?
-- 5+ years building Android apps
-- Atomic Robot founding partner
-- Husband, Dad, Geek, Insomniac, Cook, Capsaicin Lover, Craft Beer Fan
-]
+
+.portrait[![Portrait](portrait.jpeg)]
+
+- ### Husband, Dad, Geek, Insomniac, Cook, Capsaicin Lover, Craft Beer Fan
+- ### 5+ years building lots of Android apps
+- ### Atomic Robot founding partner and Android lead
 
 ---
 
