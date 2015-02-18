@@ -735,78 +735,198 @@ class: center, middle
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ]
 .right-column[
-https://github.com/krschultz/android-proguard-snippets
-- Not dynamic, but improves readability
+### Maintainable ProGuard
+```gradle
+android {
+    buildTypes {
+        release {
+            minifyEnabled true
+
+            proguardFiles(
+                // Default proguard files
+                getDefaultProguardFile(
+                    'proguard-android.txt'),
+                'proguard-rules.pro',
+                // Library specific proguard files
+                'proguard-google-play-services.pro',
+                ...
+            )
+        }
+    }
+}
+```
+
+- #### Go to the link, download the specific ProGuard files, put them in your app directory
+- #### Not dynamic (*.pro files will not be automagically updated if they change)
+
+.footnote[https://github.com/krschultz/android-proguard-snippets]
 ]
 
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ]
 .right-column[
 ### Quality Tools - Lint
+```gradle
+android {
+    lintOptions {
+        abortOnError true
+        lintConfig file('lint.xml')
+        htmlReport true
+    }
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Lint config goes here -->
+</lint>
+```
+
+```shell
+./gradlew app:lint
+...
+open app/build/outputs/lint-results.html
+```
 ]
 
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ]
 .right-column[
 ### Quality Tools - FindBugs
+```gradle
+# app/build.gradle
+task findbugs(type: FindBugs, dependsOn: assembleDebug) {
+    excludeFilter file("findbugs-exclude.xml")
+    classes = fileTree('build/intermediates/classes/debug/')
+    source = fileTree('src/main/java/')
+    classpath = files()
+    effort = 'max'
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+```
 ]
-
+.footnote[https://github.com/stephanenicolas/Quality-Tools-for-Android]
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ]
 .right-column[
-### Quality Tools - PMD
+### Quality Tools - FindBugs (cont)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Class name="~.*\.R\$.*"/>
+    </Match>
+    <Match>
+        <Class name="~.*\.Manifest\$.*"/>
+    </Match>
+    <!-- All bugs in test classes, except for JUnit-specific bugs -->
+    <Match>
+        <Class name="~.*\.*Test" />
+        <Not>
+            <Bug code="IJU" />
+        </Not>
+    </Match>
+</FindBugsFilter>
+```
+
+```shell
+./gradlew app:findbugs
+...
+
+open app/build/reports/findbugs/findbugs.html
+```
+
+#### Also consider integrating PMD, CPD, CheckStyle, etc...
 ]
 
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ## Version checks
 ]
 .right-column[
-### Ensuring dependency versions are up to date
+### Verifying dependencies are current
+```gradle
+# app/build.gradle
+buildscript {
+  dependencies {
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.8'
+  }
+}
+
+apply plugin: 'com.github.ben-manes.versions'
+
+```
+
+```shell
+./gradlew app:dependencyUpdates -Drevision=release
+```
 ]
 
+.footnote[https://github.com/ben-manes/gradle-versions-plugin]
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ## Version checks
 ]
 .right-column[
 ### Preventing wild card dependencies
-### https://gist.github.com/JakeWharton/2066f5e4f08fbaaa68fd
+```gradle
+# build.gradle
+allprojects {
+  afterEvaluate { project ->
+    project.configurations.all {
+      resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.version.contains('+')) {
+          throw new GradleException("Wildcard dependency forbidden: ${requested.group}:${requested.name}:${requested.version}")
+        }
+      }
+    }
+  }
+}
+```
+(For easier to read code please see the Gist referenced in the footnote)
 ]
-
+.footnote[https://gist.github.com/JakeWharton/2066f5e4f08fbaaa68fd]
 ---
 
 .left-column[
-## ProGuard Hell
+## ProGuard
 ## Quality
 ## Version checks
 ## Productivity
 ]
 .right-column[
-### http://gradleplease.appspot.com
-]
+### Gradle, please
+http://gradleplease.appspot.com  
 
+![Gradle, please](gradle_please.png)
+]
 ---
 
 ### Useful links
