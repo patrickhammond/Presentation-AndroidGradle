@@ -429,6 +429,21 @@ class: center, middle
 ---
 
 .left-column[
+## Structure
+]
+.right-column[
+## Do I really have to move **everything** around?
+- ### You don't have to follow the Standard Directory Layout...
+- ### You *can* keep a similar directory structure...
+- ### But don't. Seriously. Don't.
+    - #### You'll have to do a bunch of configuration overrides
+    - #### Everyone else will have to learn the non-standard structure
+]
+
+---
+
+.left-column[
+## Structure
 ## Version Control
 ]
 .right-column[
@@ -443,6 +458,7 @@ class: center, middle
 ---
 
 .left-column[
+## Structure
 ## Version Control
 ## Gradle files
 ]
@@ -459,6 +475,7 @@ class: center, middle
 ---
 
 .left-column[
+## Structure
 ## Version Control
 ## Gradle files
 ## Tool Differences
@@ -926,6 +943,15 @@ allprojects {
 - ### AAR vs APKLIB (Maven) incompatibility is still an ecosystem issue
 - ### Tooling errors can sometimes be incredibly cryptic
 - ### Thorough documentation and relevant (recent) StackOverflow posts limited but improving
+
+---
+
+## What I didn't cover...
+- ### Multi project configurations in detail
+- ### Android library projects
+- ### CI options (ex: build numbers as code)
+- ### Dealing with awkward 3rd party libraries
+- ### Lots more!
 
 ---
 
