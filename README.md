@@ -50,8 +50,8 @@ class: center, middle
 ]
 .right-column[
 ## History
-- ### Jason Voegele maintained an Android Gradle plugin prior to Google's work   
-- ### Android Gradle plugin work started in early 2013 with the intent to replace Ant and Eclipse
+- ### Jason Voegele maintained an Android Gradle plugin up to 2013
+- ### In 2013 Google started work on an Android Gradle plugin with the intent to replace Ant and Eclipse build tools
 - ### Finally left beta with Version 1.0 in Dec 2014
 ]
 .footnote[https://github.com/jvoegele/gradle-android-plugin] 
@@ -63,7 +63,13 @@ class: center, middle
 ## Why should I care?
 ]
 .right-column[
+
+## This how the end starts...
+> #### "It's still possible to package the wearable app into the handheld app manually if you are using another IDE or another method of building."
+
 .center[![Eclipse Ant meme](meme_eclipse_ant_bad_time.jpg)]
+
+.footnote[https://developer.android.com/training/wearables/apps/packaging.html#PackageManually]
 ]
 
 ---
