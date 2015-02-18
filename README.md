@@ -806,6 +806,8 @@ open app/build/outputs/lint-results.html
 ### Quality Tools - FindBugs
 ```gradle
 # app/build.gradle
+apply plugin: 'findbugs'
+...
 task findbugs(type: FindBugs, dependsOn: assembleDebug) {
     excludeFilter file("findbugs-exclude.xml")
     classes = fileTree('build/intermediates/classes/debug/')
