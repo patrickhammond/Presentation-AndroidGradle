@@ -485,9 +485,12 @@ class: center, middle
 ## Syntax
 ]
 .right-column[
-### Why does this look different?
-- ### Gradle files are written in the Groovy language.
-- ### Having a slight familiarity with the Groovy language can be helpful for more advanced project setup.
+- ### Why does this look different?
+    - #### Gradle files are written in the Groovy language
+    - #### Having a slight familiarity with the Groovy language can be helpful for more advanced configurations
+- ### How do I know what to write?
+    - #### Read other Gradle files for examples to get a feel for things
+    - #### In tool documentation is pretty weak, but...
 ]
 .footnote[http://groovy.codehaus.org]
 
@@ -499,13 +502,13 @@ class: center, middle
 ]
 .right-column[
 ### There are lots of configuation options!
-### Recommend you download the documentation because it isn't accessible in Android Studio.
+### Recommend you download the documentation because it isn't accessible in Android Studio
 ### Steps:
 1. Go to https://developer.android.com/tools/building/plugin-for-gradle.html
-1. Download the "Plugin Language Reference" from the right side of the page.
-1. Unzip.
+1. Download the "Plugin Language Reference" from the right side of the page
+1. Unzip
 1. Open up index.html
-1. Browse like you would JavaDocs.
+1. Browse like you would JavaDocs
 ]
 
 ---
