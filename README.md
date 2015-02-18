@@ -10,10 +10,11 @@ patrick@madebyatomicrobot.com
 
 ## Presentation Links
 
-- #### The presentation can be found here:  http://patrickhammond.github.io/Presentation-AndroidGradle
-- #### Sample code can be found here:  https://github.com/patrickhammond/Presentation-AndroidGradle
+- ### The presentation can be found here:  http://patrickhammond.github.io/Presentation-AndroidGradle
 
-#### **Disclaimer:** Sample code is aimed to drive discussion and show concepts only.  It is not polished so use with caution!
+- ### Sample code can be found here:  https://github.com/patrickhammond/Presentation-AndroidGradle
+
+- ### **Disclaimer:** Sample code is aimed to drive discussion and show concepts only.  It is not polished so use with caution!
 
 ---
 
