@@ -103,6 +103,7 @@ class: center, middle
 ## When can I use it?
 ]
 .right-column[
+## When can I **really** use it?
 > ### "I tried it before and my project broke with every plugin update..."
 --Any Android developer who used the Android Gradle plugin before v1.0
 
@@ -485,36 +486,34 @@ class: center, middle
 ]
 .right-column[
 - ### Why does this look different?
-    - #### Gradle files are written in the Groovy language
-    - #### Having a slight familiarity with the Groovy language and Gradle APIs can be helpful for more advanced configurations
+    - #### Gradle files (configuration scripts) are also Groovy scripts
+    - #### Having a slight familiarity with the Groovy language and Gradle APIs can be helpful
 - ### How do I know what to write?
     - #### Read other Gradle files for examples to get a feel for things (links at the end of the presentation)
-    - #### Limited code assist and in-tool documentation can be challenging
+    - #### In-tool code assist is limited (but improving) which can be a challenge
 ]
-.footnote[http://groovy.codehaus.org]
+
+.footnote[http://groovy.codehaus.org and https://gradle.org/docs/current/dsl/]
 
 ---
 
 .left-column[
 ## Syntax
-## Plugin Docs
+## Productivity
 ]
 .right-column[
-### Plugin documentation
+### Gradle, please
+http://gradleplease.appspot.com  
 
-1. Go to https://developer.android.com/tools/building/plugin-for-gradle.html
-1. Download the "Plugin Language Reference" from the right side of the page
-1. Unzip
-1. Open up index.html
-1. Browse like you would JavaDocs
+![Gradle, please](gradle_please.png)
 ]
+
 
 ---
 
 .left-column[
 ## Syntax
-## Plugin Docs
-## Gradle Config
+## Productivity
 ]
 .right-column[
 ### Gradle Config
@@ -546,15 +545,17 @@ Medium size app
 
 .left-column[
 ## Syntax
+## Productivity
 ## Plugin Docs
-## Gradle Config
-## Issues
 ]
 .right-column[
-### Outstanding Issues
-- ### AAR vs APKLIB (Maven) incompatibility is still an ecosystem issue
-- ### Tooling errors can sometimes (frequently) be cryptic
-- ### Thorough documentation and relevant (recent) StackOverflow posts still improving
+### Plugin documentation
+
+1. Go to https://developer.android.com/tools/building/plugin-for-gradle.html
+1. Download the "Plugin Language Reference" from the right side of the page
+1. Unzip
+1. Open up index.html
+1. Browse like you would JavaDocs
 ]
 
 ---
@@ -728,8 +729,8 @@ android {
 ---
 
 class: center, middle
-# Easy Integrations
-## *"Show me the money!"*
+# Customizations and Improvements
+## *"How can I make this better?"*
 
 ---
 
@@ -918,20 +919,14 @@ allprojects {
 (For easier to read code please see the Gist referenced in the footnote)
 ]
 .footnote[https://gist.github.com/JakeWharton/2066f5e4f08fbaaa68fd]
+
 ---
 
-.left-column[
-## ProGuard
-## Quality
-## Version checks
-## Productivity
-]
-.right-column[
-### Gradle, please
-http://gradleplease.appspot.com  
+## Outstanding Issues
+- ### AAR vs APKLIB (Maven) incompatibility is still an ecosystem issue
+- ### Tooling errors can sometimes be incredibly cryptic
+- ### Thorough documentation and relevant (recent) StackOverflow posts limited but improving
 
-![Gradle, please](gradle_please.png)
-]
 ---
 
 ### Useful links
