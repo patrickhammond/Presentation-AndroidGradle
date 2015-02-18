@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyAppLite</string>
+    <string name="user_message">You should totally buy the full version of our app!</string>
+</resources>
